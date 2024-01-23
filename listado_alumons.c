@@ -9,7 +9,6 @@ struct alumno
     char carrera[50];   // carrera del alumno
     float promedio;     // promedio del alumno
 };
-
 int main()
 {
     struct alumno estudiantes[100]; // declara un array de estructuras de alumnos
@@ -42,9 +41,9 @@ int main()
             printf("Ingrese carrera: ");  // pide al usuario la carrera del estudiante
             gets(estudiantes[i].carrera); // lee la carrera del estudiante
 
-            printf("Ingrese promedio (puede incluir decimales∫): "); // pide al usuario el promedio del estudiante
-            scanf("%f", &estudiantes[i].promedio);                   // lee el promedio del estudiante
-            fflush(stdin);                                           // limpia el buffer de entrada
+            printf("Ingrese promedio (puede incluir decimales): "); // pide al usuario el promedio del estudiante
+            scanf("%f", &estudiantes[i].promedio);                  // lee el promedio del estudiante
+            fflush(stdin);                                          // limpia el buffer de entrada
 
             i++; // incrementa el contador de estudiantes
 
@@ -73,7 +72,6 @@ int main()
             break;
         }
     }
-
     FILE *ptr;
     char archivo[12] = {"Alumnos.txt"};
     ptr = fopen(archivo, "a");
@@ -86,11 +84,7 @@ int main()
 
     for (int j = 0; j < cantidad; i++)
     {
-        fprintf(ptr, "matricula: %d\n",estudiantes[j].matricula);
-        fprintf(ptr, "nombre: %d\n", estudiantes[j].nombre);
-        fprintf(ptr, "direccion: %d\n", estudiantes[j].direccion);
-        fprintf(ptr, "carrera: %d\n", estudiantes[j].carrera);
-        fprintf(ptr, "promedio: %.2f\n", estudiantes[j].promedio);
+        fprintf(ptr, "matricula: %d\n", estudiantes[j].matricula,ptr, "nombre: %d\n", estudiantes[j].nombre,ptr, "direccion: %d\n", estudiantes[j].direccion,ptr, "carrera: %d\n", estudiantes[j].carrera,ptr, "promedio: %.2f\n", estudiantes[j].promedio); // se imprime los datos de los alumnos en el archivo de texto
     }
 
     fclose(ptr);
