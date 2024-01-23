@@ -62,9 +62,13 @@ int main()
                 puts(estudiantes[j].carrera);
                 printf("Promedio: %.2f\n", estudiantes[j].promedio); // imprime el promedio del estudiante
             }
-            break; // termina el caso 2∫
+            break; // termina el caso 2
+        case 3:    // caso en el que el usuario elige la opcion 3
+            printf("Saliendo del programa :).......");
+            exit(0); // termina el programa
 
-        default:
+        default:                                             // Caso en el que el usuario elige una opcion no valida
+            printf("Opcion no valida. Intente de nuevo.\n"); // imprime un mensaje de error
             break;
         }
     }
