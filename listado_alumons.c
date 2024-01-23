@@ -14,6 +14,7 @@ int main()
 {
     struct alumno estudiantes[100]; // declara un array de estructuras de alumnos
     int opcion, i = 0;              // declara las variables opcion i
+    int cantidad;
 
     while (1)
     {
@@ -27,23 +28,23 @@ int main()
 
         switch (opcion)
         {
-        case 1:                                     // em caso que el usuario elige la opcion 1 se realizara lo siguiente
-            printf("Ingrese numero de matricula: ");          // pide al usuario la matricula del estudiante
-            scanf("%d", &estudiantes[i].matricula); // lee la matricula del estudiante
-            fflush(stdin);                          // limpia el buffer de entrada
+        case 1:                                      // em caso que el usuario elige la opcion 1 se realizara lo siguiente
+            printf("Ingrese numero de matricula: "); // pide al usuario la matricula del estudiante
+            scanf("%d", &estudiantes[i].matricula);  // lee la matricula del estudiante
+            fflush(stdin);                           // limpia el buffer de entrada
 
             printf("Ingrese nombre: ");  // pide al usuario el nombre del estudiante
             gets(estudiantes[i].nombre); // lee el nombre del estudiante
 
-            printf("Ingrese direccion (ingrese el sector donde vive): ");  // pide al usuario la dirección del estudiante
-            gets(estudiantes[i].direccion); // lee la direccion del estudiante
+            printf("Ingrese direccion (ingrese el sector donde vive): "); // pide al usuario la dirección del estudiante
+            gets(estudiantes[i].direccion);                               // lee la direccion del estudiante
 
             printf("Ingrese carrera: ");  // pide al usuario la carrera del estudiante
             gets(estudiantes[i].carrera); // lee la carrera del estudiante
 
-            printf("Ingrese promedio (puede incluir decimales∫): ");          // pide al usuario el promedio del estudiante
-            scanf("%f", &estudiantes[i].promedio); // lee el promedio del estudiante
-            fflush(stdin);                         // limpia el buffer de entrada
+            printf("Ingrese promedio (puede incluir decimales∫): "); // pide al usuario el promedio del estudiante
+            scanf("%f", &estudiantes[i].promedio);                   // lee el promedio del estudiante
+            fflush(stdin);                                           // limpia el buffer de entrada
 
             i++; // incrementa el contador de estudiantes
 
@@ -52,7 +53,7 @@ int main()
             for (int j = 0; j < i; j++) // bucle que recorre todos los estudiantes ingresados
             {
                 printf("-------------Listado de Alumnos----------- \n");
-                printf("\nEstudiante %d\n", j + 1);                 // imprime el encabezado del estudiante
+                printf("\nEstudiante %d\n", j + 1);                  // imprime el encabezado del estudiante
                 printf("Matricula: %d\n", estudiantes[j].matricula); // imprime la matricula del estudiante
                 printf("Nombre: ");                                  // imprime el nombre del estudiante
                 puts(estudiantes[j].nombre);
@@ -72,4 +73,26 @@ int main()
             break;
         }
     }
+
+    FILE *ptr;
+    char archivo[12] = {"Alumnos.txt"};
+    ptr = fopen(archivo, "a");
+
+    if (ptr == NULL)
+    {
+        printf("no existen datos en el archivo \n");
+        return 1;
+    }
+
+    for (int j = 0; j < cantidad; i++)
+    {
+        fprintf(ptr, "matricula: %d\n",estudiantes[j].matricula);
+        fprintf(ptr, "nombre: %d\n", estudiantes[j].nombre);
+        fprintf(ptr, "direccion: %d\n", estudiantes[j].direccion);
+        fprintf(ptr, "carrera: %d\n", estudiantes[j].carrera);
+        fprintf(ptr, "promedio: %.2f\n", estudiantes[j].promedio);
+    }
+
+    fclose(ptr);
+    return 0;
 }
